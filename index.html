@@ -185,48 +185,20 @@
             100% { opacity: 0; transform: scale(0); }
         }
 
-        /* Navbar styles */
-        .navbar {
+        /* Remove the navbar styles */
+        .navbar, .nav-menu, .nav-item, .nav-link, .menu-icon {
+            display: none;
+        }
+
+        /* Update scrolling text styles */
+        .scrolling-text-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: transparent;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
             z-index: 1000;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-item {
-            margin-left: 60px;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: #fff;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-icon.active {
-            transform: rotate(90deg);
         }
 
         .scrolling-text {
@@ -237,12 +209,16 @@
             color: #fff;
             font-size: 18px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            
         }
 
         @keyframes scrolling {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
+        }
+
+        /* Adjust the top padding of the bg to accommodate the scrolling text */
+        .bg {
+            padding-top: 80px;
         }
 
         @media screen and (max-width: 1024px) {
@@ -255,42 +231,6 @@
                 min-height: 100vh;
                 justify-content: flex-start;
                 padding-top: 100px;
-            }
-
-            .navbar {
-                flex-wrap: wrap;
-                padding: 20px;
-            }
-
-            .menu-icon {
-                display: block;
-                order: 1;
-                margin-right: 20px;
-                margin-top: 50px; /* Move the icon a bit lower */
-            }
-
-            .scrolling-text {
-                order: 2;
-                width: calc(100% - 80px);
-            }
-
-            .nav-menu {
-                flex-direction: column;
-                width: 100%;
-                display: none;
-                order: 3;
-                background-color: rgba(0, 0, 0, 0.8);
-                padding: 20px 0;
-                margin-top: 20px;
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-item {
-                margin: 10px 0;
-                text-align: center;
             }
 
             .logo-section {
@@ -415,16 +355,9 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+    <div class="scrolling-text-container">
         <div class="scrolling-text">Free Classes! Limited Time only!</div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Classes</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
+    </div>
 
     <div class="bg">
         <!-- Sparkle elements -->
@@ -464,19 +397,7 @@
     </div>
 
     <script>
-        document.querySelector('.menu-icon').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        window.addEventListener('scroll', function() {
-            var navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Remove the existing script content as it's no longer needed
     </script>
 </body>
 </html>
