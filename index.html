@@ -72,6 +72,9 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             font-weight: 700;
             text-align: center;
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflowing text */
+            text-overflow: ellipsis; /* Show ellipsis for overflowing text */
         }
         .caption .heart {
             color: #ff6b6b; /* Heart color */
@@ -222,60 +225,67 @@
         }
 
         @media screen and (max-width: 1024px) {
-            body {
-                overflow-y: auto;
+            body, html {
+                overflow: hidden;
             }
 
             .bg {
-                height: auto;
-                min-height: 100vh;
-                justify-content: flex-start;
-                padding-top: 100px;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; /* Center vertically */
+                padding: 20px;
+                overflow: hidden;
             }
 
             .logo-section {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                margin-bottom: 50px;
-                animation: none;
+                flex-shrink: 0;
+                margin-bottom: 30px; /* Increase bottom margin to move logo lower */
+                margin-top: -50px; /* Add negative top margin to move logo down */
             }
 
             .logo {
-                max-width: 300px;
+                max-width: 150px;
             }
 
             .caption {
-                font-size: 24px;
-                white-space: normal;
-                word-wrap: break-word;
+                font-size: 16px;
             }
 
             .content-wrapper {
+                flex-grow: 0; /* Prevent growing */
+                display: flex;
                 justify-content: center;
-                margin-right: 0;
-                margin-top: 0;
+                align-items: center;
             }
 
             .email-capture {
-                width: 90%;
-                max-width: 400px;
-                margin-bottom: 50px;
+                width: 100%;
+                max-width: 300px;
+                padding: 20px;
+            }
+
+            .email-capture h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .email-capture p {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            button {
+                padding: 12px;
+                font-size: 16px;
+                margin-bottom: 15px;
             }
 
             .guide-image {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                transform: none;
-                max-width: 90%;
+                display: none; /* Hide the guide image on smaller devices */
             }
-        }
-
-        /* Adjust existing styles to accommodate the navbar */
-        .bg {
-            padding-top: 60px;
         }
 
         @keyframes float {
